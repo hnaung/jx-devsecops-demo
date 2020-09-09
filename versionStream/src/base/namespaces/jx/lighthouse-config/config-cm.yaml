@@ -5,6 +5,10 @@ data:
       orgs:
         hnaung:
           repos:
+            https-github.com-hnaung-web-api-demo:
+              required_status_checks:
+                contexts:
+                - pr-build
             jx-devsecops-demo:
               required_status_checks:
                 contexts:
@@ -15,6 +19,12 @@ data:
     plank: {}
     pod_namespace: jx
     postsubmits:
+      hnaung/https-github.com-hnaung-web-api-demo:
+      - agent: tekton
+        branches:
+        - master
+        name: release
+        skip_report: true
       hnaung/jx-devsecops-demo:
       - agent: tekton
         branches:
@@ -22,6 +32,13 @@ data:
         name: promotion
         skip_report: true
     presubmits:
+      hnaung/https-github.com-hnaung-web-api-demo:
+      - agent: tekton
+        always_run: true
+        context: pr-build
+        name: pr-build
+        rerun_command: /test this
+        trigger: (?m)^/test( all| this),?(\s+|$)
       hnaung/jx-devsecops-demo:
       - agent: tekton
         always_run: true
@@ -35,9 +52,10 @@ data:
     tide:
       context_options:
         from-branch-protection: true
-        required-if-present-contexts: []
+        required-if-present-contexts: null
         skip-unknown-contexts: false
       merge_method:
+        hnaung/https-github.com-hnaung-web-api-demo: merge
         hnaung/jx-devsecops-demo: merge
       queries:
       - labels:
@@ -50,6 +68,7 @@ data:
         - needs-rebase
         repos:
         - hnaung/jx-devsecops-demo
+        - hnaung/https-github.com-hnaung-web-api-demo
       - labels:
         - updatebot
         missingLabels:
@@ -60,6 +79,7 @@ data:
         - needs-rebase
         repos:
         - hnaung/jx-devsecops-demo
+        - hnaung/https-github.com-hnaung-web-api-demo
       target_url: http://deck-jx.192.168.99.114.nip.io
 kind: ConfigMap
 metadata:

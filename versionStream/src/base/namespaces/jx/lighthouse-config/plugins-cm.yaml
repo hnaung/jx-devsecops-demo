@@ -6,6 +6,10 @@ data:
       repos:
       - hnaung/jx-devsecops-demo
       require_self_approval: true
+    - lgtm_acts_as_approve: true
+      repos:
+      - hnaung/https-github.com-hnaung-web-api-demo
+      require_self_approval: true
     cat: {}
     cherry_pick_unapproved: {}
     config_updater:
@@ -20,6 +24,22 @@ data:
       additional_labels: null
     owners: {}
     plugins:
+      hnaung/https-github.com-hnaung-web-api-demo:
+      - approve
+      - assign
+      - blunderbuss
+      - help
+      - hold
+      - lgtm
+      - lifecycle
+      - override
+      - size
+      - trigger
+      - wip
+      - heart
+      - cat
+      - dog
+      - pony
       hnaung/jx-devsecops-demo:
       - config-updater
       - approve
@@ -49,6 +69,11 @@ data:
     - repos:
       - hnaung/jx-devsecops-demo
       trusted_org: todo
+    - repos:
+      - hnaung/https-github.com-hnaung-web-api-demo
+      trusted_org: todo
+    welcome:
+    - message_template: Welcome
 kind: ConfigMap
 metadata:
   creationTimestamp: null

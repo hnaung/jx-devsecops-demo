@@ -1,0 +1,21 @@
+apiVersion: jenkins.io/v1
+kind: SourceRepository
+metadata:
+  creationTimestamp: null
+  labels:
+    owner: hnaung
+    provider: github
+    repository: https-github.com-hnaung-web-api-demo
+    gitops.jenkins-x.io/pipeline: 'namespaces'
+  name: hnaung-https-github-com-hnaung-web-api-demo
+spec:
+  httpCloneURL: https://github.com/hnaung/https-github.com-hnaung-web-api-demo.git
+  org: hnaung
+  provider: https://github.com
+  providerKind: github
+  providerName: github
+  repo: https-github.com-hnaung-web-api-demo
+  scheduler:
+    kind: ""
+    name: ""
+  url: https://github.com/hnaung/https-github.com-hnaung-web-api-demo
