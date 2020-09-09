@@ -1,0 +1,7 @@
+dependencies:
+- host: github.com
+  owner: hnaung
+  repo: https-github.com-hnaung-web-api-demo
+  url: https://github.com/hnaung/https-github.com-hnaung-web-api-demo.git
+  version: ""
+  versionURL: ""
